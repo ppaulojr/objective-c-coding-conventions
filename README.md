@@ -28,6 +28,7 @@ Apple documentation outlining general guidelines for creating any Objective-C st
 * [Literals](#literals)
 * [CGRect Functions](#cgrect-functions)
 * [Constants](#constants)
+* [Types](#types)
 * [Enumerated Types](#enumerated-types)
 * [Bitmasks](#bitmasks)
 * [Private Properties](#private-properties)
@@ -299,6 +300,11 @@ static const CGFloat NYTImageThumbnailHeight = 50.0;
 
 #define thumbnailHeight 2
 ```
+
+## Types
+`NSInteger` and `NSUInteger` should be used instead of int, long, etc per Apple's best practices and 64-bit safety. `CGFloat` is preferred over float for the same reasons. This future proofs code for 64-bit platforms.
+
+All Apple types should be used over primitive ones. For example, if you are working with time intervals, use `NSTimeInterval` instead of double even though it is synonymous. This is considered best practice and makes for clearer code.
 
 ## Enumerated Types
 
