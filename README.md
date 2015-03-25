@@ -1,3 +1,4 @@
+
 # General Objective-C Style Guide
 
 Coding Conventions for iOS development using Objective-C
@@ -38,6 +39,7 @@ Apple documentation outlining general guidelines for creating any Objective-C st
 * [Singletons](#singletons)
 * [Imports](#imports)
 * [Xcode Project](#xcode-project)
+* [Documentation](#documentation)
 
 ## Dot-Notation Syntax
 
@@ -65,7 +67,7 @@ UIApplication.sharedApplication.delegate;
 
 ## Conditionals
 
-Conditional bodies should always use braces even when a conditional body could be written without braces (e.g., it is one line only) to prevent [errors](https://github.com/NYTimes/objective-c-style-guide/issues/26#issuecomment-22074256). These errors include adding a second line and expecting it to be part of the if-statement. Another, [even more dangerous defect](http://programmers.stackexchange.com/a/16530) may happen where the line "inside" the if-statement is commented out, and the next line unwittingly becomes part of the if-statement. In addition, this style is more consistent with all other conditionals, and therefore more easily scannable.
+Conditional bodies should always use braces even when a conditional body could be written without braces (e.g., it is one line only) to prevent bugs. These bugs include adding a second line and expecting it to be part of the if-statement. Another, [even more dangerous defect](http://programmers.stackexchange.com/a/16530) may happen where the line "inside" the if-statement is commented out, and the next line unwittingly becomes part of the if-statement. In addition, this style is more consistent with all other conditionals, and therefore more easily scannable.
 
 **For example:**
 ```objc
@@ -445,11 +447,11 @@ Note: For modules use the [@import](http://clang.llvm.org/docs/Modules.html#usin
 @import QuartzCore;
 
 // Models
-#import "NYTUser.h"
+#import "PPJUser.h"
 
 // Views
-#import "NYTButton.h"
-#import "NYTUserView.h"
+#import "PPJButton.h"
+#import "PPJUserView.h"
 ```
 
 ## Xcode project
@@ -458,11 +460,26 @@ The physical files should be kept in sync with the Xcode project files in order 
 
 When possible, always turn on "Treat Warnings as Errors" in the target's Build Settings and enable as many [additional warnings](http://boredzo.org/blog/archives/2009-11-07/warnings) as possible. If you need to ignore a specific warning, use [Clang's pragma feature](http://clang.llvm.org/docs/UsersManual.html#controlling-diagnostics-via-pragmas).
 
+## Documentation
+Documentation should follow AppleDoc standards. An easy way to adpat to that is to install [VVDocumenter Plugin](https://github.com/onevcat/VVDocumenter-Xcode).
+
+See the example below:
+
+```objc
+/**
+ *  <#Description#>
+ *
+ *  @param style           <#style description#>
+ *  @param reuseIdentifier <#reuseIdentifier description#>
+ *
+ *  @return <#return value description#>
+ */
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+```
+
 # Other Objective-C Style Guides
 
-If ours doesn't fit your tastes, have a look at some other style guides:
+We used in this document some ideas from
 
-* [Google](http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml)
 * [GitHub](https://github.com/github/objective-c-conventions)
-* [Adium](https://trac.adium.im/wiki/CodingStyle)
 * [Sam Soffes](https://gist.github.com/soffes/812796)
