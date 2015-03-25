@@ -18,7 +18,8 @@ Apple documentation outlining general guidelines for creating any Objective-C st
 * [Dot-Notation Syntax](#dot-notation-syntax)
 * [Spacing](#spacing)
 * [Conditionals](#conditionals)
-  * [Ternary Operator](#ternary-operator)
+* [Operators](#operators)
+* [Ternary Operator](#ternary-operator)
 * [Error handling](#error-handling)
 * [Methods](#methods)
 * [Variables](#variables)
@@ -83,6 +84,16 @@ or
 
 ```objc
 if (!error) return success;
+```
+
+### Operators
+
+```objective-c
+NSString *test = @"value";
+NSInteger value = 192;
+value += 3;
+value = 23 + 1;
+value++;
 ```
 
 ### Ternary Operator
