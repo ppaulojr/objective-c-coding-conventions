@@ -42,6 +42,7 @@ Apple documentation outlining general guidelines for creating any Objective-C st
 * [Booleans](#booleans)
 * [Singletons](#singletons)
 * [Imports](#imports)
+* [Internationalization](#internationalization)
 * [Xcode Project](#xcode-project)
 * [Documentation](#documentation)
 
@@ -459,6 +460,21 @@ Note: For modules use the [@import](http://clang.llvm.org/docs/Modules.html#usin
 #import "PPJButton.h"
 #import "PPJUserView.h"
 ```
+
+## Internationalization
+Strings that will show up to the user *must* use `NSLocalizeString` macro.
+
+```objc
+NSString * alertMessage = NSLocalizedString (@"My Message in English",nil);
+```
+
+and not
+
+```objc
+NSString * alertMessage = @"My Message in English";
+```
+
+
 
 ## Xcode project
 
