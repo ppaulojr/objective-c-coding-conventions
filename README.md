@@ -59,7 +59,7 @@ view.backgroundColor = [UIColor orangeColor];
 **Not:**
 ```objc
 [view setBackgroundColor:[UIColor orangeColor]];
-UIApplication.sharedApplication.delegate;
+UIApplication.sharedApplication.delegate; // sharedApplication is a singleton call
 ```
 
 ## Spacing
