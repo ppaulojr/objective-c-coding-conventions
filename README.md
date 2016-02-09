@@ -66,7 +66,7 @@ UIApplication.sharedApplication.delegate; // sharedApplication is a singleton ca
 
  * Tabs, not spaces.
  * End files with a newline.
- * Make liberal use of vertical whitespace to divide code into logical chunks.
+ * Make liberal (but do not abuse) use of vertical whitespace to divide code into logical chunks.
  * Don’t leave trailing whitespace.
     * Not even leading indentation on blank lines.
 
