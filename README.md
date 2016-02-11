@@ -42,6 +42,7 @@ Apple documentation outlining general guidelines for creating any Objective-C st
 * [Booleans](#booleans)
 * [Singletons](#singletons)
 * [Imports](#imports)
+* [Internationalization](#internationalization)
 * [Xcode Project](#xcode-project)
 * [Documentation](#documentation)
 
@@ -58,14 +59,14 @@ view.backgroundColor = [UIColor orangeColor];
 **Not:**
 ```objc
 [view setBackgroundColor:[UIColor orangeColor]];
-UIApplication.sharedApplication.delegate;
+UIApplication.sharedApplication.delegate; // sharedApplication is a singleton call
 ```
 
 ## Spacing
 
  * Tabs, not spaces.
  * End files with a newline.
- * Make liberal use of vertical whitespace to divide code into logical chunks.
+ * Make liberal (but do not abuse) use of vertical whitespace to divide code into logical chunks.
  * Don’t leave trailing whitespace.
     * Not even leading indentation on blank lines.
 
@@ -151,7 +152,7 @@ In method signatures, there should be a space after the scope (-/+ symbol). Ther
 
 Variables should be named as descriptively as possible. Single letter variable names should be avoided except in `for()` loops.
 
-Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`, except in the case of constants.
+Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`.
 
 Property definitions should be used in place of naked instance variables whenever possible. Direct instance variable access should be avoided except in initializer methods (`init`, `initWithCoder:`, etc…), `dealloc` methods and within custom setters and getters. For more information on using Accessor Methods in Initializer Methods and dealloc, see [here](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmPractical.html#//apple_ref/doc/uid/TP40004447-SW6).
 
@@ -229,7 +230,9 @@ id varnm;
 
 When they are needed, comments should be used to explain **why** a particular piece of code does something. Any comments that are used must be kept up-to-date or deleted.
 
-Block comments should generally be avoided, as code should be as self-documenting as possible, with only the need for intermittent, few-line explanations. This does not apply to those comments used to generate documentation.
+Block comments should generally be avoided, as code should be as self-documenting as possible, with only the need for intermittent, few-line explanations. This does not apply to those **comments used to generate documentation**.
+
+For documentation a handy plugin for the XCode is [VVDocumenter](https://github.com/onevcat/VVDocumenter-Xcode)
 
 ## init and dealloc
 
@@ -442,7 +445,7 @@ This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.
 
 ## Imports
 
-If there is more than one import statement, group the statements [together](http://ashfurrow.com/blog/structuring-modern-objective-c). Commenting each group is optional.
+If there is more than one import statement, group the statements [together](http://ashfurrow.com/blog/structuring-modern-objective-c). Commenting each group is optional. You can use [CleanHeader](https://github.com/insanoid/CleanHeaders-Xcode) to organize headers.
 
 Note: For modules use the [@import](http://clang.llvm.org/docs/Modules.html#using-modules) syntax.
 
@@ -457,6 +460,21 @@ Note: For modules use the [@import](http://clang.llvm.org/docs/Modules.html#usin
 #import "PPJButton.h"
 #import "PPJUserView.h"
 ```
+
+## Internationalization
+Strings that will show up to the user *must* use `NSLocalizeString` macro.
+
+```objc
+NSString * alertMessage = NSLocalizedString (@"My Message in English",nil);
+```
+
+and not
+
+```objc
+NSString * alertMessage = @"My Message in English";
+```
+
+
 
 ## Xcode project
 
